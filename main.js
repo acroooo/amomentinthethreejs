@@ -73,7 +73,34 @@ function addStar() {
 
 Array(1000).fill().forEach(addStar)
 
+// Texture
+const spaceTexture = new THREE.TextureLoader().load('alexander-andrews-fsH1KjbdjE8-unsplash.jpg')
+const texture = new THREE.Mesh(
+    new THREE.BoxGeometry(3,3,3),
+    new THREE.MeshBasicMaterial({
+        map: spaceTexture,
+        side: THREE.DoubleSide,
+        transparent: true,
+        alphaTest: 0.5,
+        opacity: 0.5,
+        blending: THREE.AdditiveBlending,
+        blendSrc: THREE.OneFactor,
+        blendDst: THREE.OneFactor,
+        blendEquation: THREE.AddEquation,
 
+        depthWrite: false,
+        depthTest: false,
+        depthFunc: THREE.Less
+
+        // side: THREE.FrontSide
+
+        // transparent: true,
+        // opacity: 0.5,
+    }
+    )
+)
+
+scene.add(texture)
 function animate() {
 
     mesh.rotation.x += 0.01
